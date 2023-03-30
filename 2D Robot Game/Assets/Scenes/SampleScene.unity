@@ -252,6 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6947818a0756af46bd242a5410b05ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 519420033}
   _speed: 10
 --- !u!212 &1338491403
 SpriteRenderer:

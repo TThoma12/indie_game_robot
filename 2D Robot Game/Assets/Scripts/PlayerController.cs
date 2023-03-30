@@ -6,21 +6,15 @@ public class PlayerController : MonoBehaviour
 {
     private float horizontalInput;
     private float verticalInput;
-
+    [SerializeField] CameraController cameraFollow;
     public float _speed = 10.0f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         MovePlayer();
         LookAtMouse();
-
+        HandleInteractions();
     }
 
     private void MovePlayer()
@@ -39,5 +33,12 @@ public class PlayerController : MonoBehaviour
 
         //Player faces mouse
         this.transform.up = (Vector3)(mousePos - new Vector2(transform.position.x, transform.position.y));
+    }
+    //TriggerShake
+
+    private void HandleInteractions() {
+        if(Input.GetKeyDown(KeyCode.Z)) {
+            cameraFollow.TriggerShake();
+        }
     }
 }
