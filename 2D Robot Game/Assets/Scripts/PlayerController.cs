@@ -94,12 +94,16 @@ public class PlayerController : MonoBehaviour
         //Player faces mouse
         this.transform.up = (Vector3)(mousePos - new Vector2(transform.position.x, transform.position.y));
     }
-    //TriggerShake
+
 
     private void HandleInteractions() {
-        if(Input.GetKeyDown(KeyCode.Z)) {
+        if (Input.GetKeyDown(KeyCode.Z)) {
             cameraFollow.TriggerShake();
         }
+    }
+
+    public void Attack() {
+        cameraFollow.TriggerShake();
     }
 
     private void Dash()
