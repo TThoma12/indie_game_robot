@@ -11,8 +11,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float horizontalInput;
     [SerializeField] private float verticalInput;
     [SerializeField] private TrailRenderer trailRenderer;
-
+    [SerializeField] CameraController cameraFollow;
+    [SerializeField] GameObject bulletPrefab;
+    
     public float playerSpeed;
+
+    public bool isUsingPistol;
 
     private float normalSpeed = 10.0f;
     private float dashSpeed = 20.0f;
@@ -38,6 +42,13 @@ public class PlayerController : MonoBehaviour
 
         MovePlayer();
         LookAtMouse();
+        HandleInteractions();
+
+        if(Input.GetMouseButtonDown(0))
+        {
+            SpawnBullet();
+            cameraFollow.TriggerShake();
+        }
 
     }
 
@@ -93,8 +104,16 @@ public class PlayerController : MonoBehaviour
         this.transform.up = (Vector3)(mousePos - new Vector2(transform.position.x, transform.position.y));
     }
 
-    private void Dash()
+    //TriggerShake
+    private void HandleInteractions() {
+        if(Input.GetKeyDown(KeyCode.Z)) {
+            cameraFollow.TriggerShake();
+        }
+    }
+
+    private void SpawnBullet()
     {
+        Instantiate(bulletPrefab, transform.position, transform.rotation);
         
     }
 }
