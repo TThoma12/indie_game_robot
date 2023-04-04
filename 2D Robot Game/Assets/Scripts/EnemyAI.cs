@@ -22,11 +22,6 @@ public class EnemyAI : MonoBehaviour
     public bool canFire = true;
 
 
-    public float enemyHP = 100f;
-
-    [SerializeField] PlayerController playerController;
-
-
     // Rigidbody for enemy
     Rigidbody2D rb;
 
@@ -36,9 +31,6 @@ public class EnemyAI : MonoBehaviour
         // Get components
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player (Placeholder)");
-
-        playerController = player.GetComponent<PlayerController>();
-        
 
     }
 
@@ -60,13 +52,6 @@ public class EnemyAI : MonoBehaviour
         //Vector3 dir = player.transform.position - transform.position;
         //float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         //transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-
-
-        if(enemyHP <= 0)
-        {
-            Destroy(gameObject);
-        }
-
 
     }
 
@@ -112,18 +97,5 @@ public class EnemyAI : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         canFire = true;
-    }
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(playerController.isUsingPistol)
-        {
-            enemyHP -= 8f;
-        }
-        else
-        {
-            enemyHP -= 15f;
-        }
     }
 }
