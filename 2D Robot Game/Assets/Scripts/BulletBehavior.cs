@@ -43,7 +43,7 @@ public class BulletBehavior : MonoBehaviour
 
         float distanceFromShooter = Vector2.Distance(initialPosition, transform.position);
 
-        if (distanceFromShooter > (player.GetComponent<BoxCollider2D>().size.magnitude) + (bulletCollider.size.magnitude / 2))
+        if (distanceFromShooter > 1)
         {
             bulletCollider.enabled = true;
         }

@@ -16,10 +16,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject bulletPrefab;
 
     public TextMeshProUGUI gunTypeText;
+    public TextMeshProUGUI gunAmmoText;
     
-    public float playerSpeed;
+    private float playerSpeed;
 
     public bool isUsingPistol = true;
+    public bool isReloading = false;
 
     public float playerHP = 100;
 
@@ -34,8 +36,8 @@ public class PlayerController : MonoBehaviour
     private float pistolReloadTime = 2f;
     private float rifleReloadTime = 3f;
 
-    public float ammoSize;
-    public float magSize;
+    private float ammoSize;
+    private float magSize;
 
     private float pistolAmmoSize = 12f;
     private float pistolMagSize = 100f;
@@ -48,7 +50,7 @@ public class PlayerController : MonoBehaviour
     private float currentPistolMag;
     private float currentRifleMag = 90;
 
-    public bool canFire = true;
+    private bool canFire = true;
 
     public float fireCooldown;
     public float reloadTime;
@@ -100,10 +102,19 @@ public class PlayerController : MonoBehaviour
         if(isUsingPistol)
         {
             gunTypeText.text = "Gun: Pistol";
+            if(!isReloading)
+            {
+                gunAmmoText.text = currentPistolAmmo + "/" + currentPistolMag;
+            }
+
         }
         else
         {
             gunTypeText.text = "Gun: Rifle";
+            if (!isReloading)
+            {
+                gunAmmoText.text = currentRifleAmmo + "/" + currentRifleMag;
+            }
         }
 
         if(Input.GetKeyDown(KeyCode.R))
@@ -231,9 +242,10 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator ReloadTime()
     {
-        Debug.Log("Reloading");
+        gunAmmoText.text = "Reloading";
+        isReloading = true;
         yield return new WaitForSeconds(reloadTime);
-        Debug.Log("Can Fire");
+        isReloading = false;
         canFire = true;
     }
 }
