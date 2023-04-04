@@ -284,9 +284,12 @@ MonoBehaviour:
   speed: 5
   canFire: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   enemyHP: 100
   playerController: {fileID: 0}
+=======
+>>>>>>> parent of a7c2e49 (Added player and enemy health, and different bullets)
 =======
 >>>>>>> parent of a7c2e49 (Added player and enemy health, and different bullets)
 --- !u!61 &301100396
@@ -414,6 +417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1338491401}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 --- !u!1 &573551866
 GameObject:
@@ -484,6 +488,8 @@ Transform:
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   
+=======
+>>>>>>> parent of a7c2e49 (Added player and enemy health, and different bullets)
 =======
 >>>>>>> parent of a7c2e49 (Added player and enemy health, and different bullets)
 --- !u!1 &1027722401
@@ -591,6 +597,7 @@ MonoBehaviour:
   cameraFollow: {fileID: 519420034}
   bulletPrefab: {fileID: 1861128699853914685, guid: 3c8e282c71588ef4c8431e5965c96674, type: 3}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   gunTypeText: {fileID: 2052031976}
   playerSpeed: 0
@@ -605,6 +612,10 @@ MonoBehaviour:
   playerSpeed: 0
   isUsingPistol: 0
 
+=======
+  playerSpeed: 0
+  isUsingPistol: 0
+>>>>>>> parent of a7c2e49 (Added player and enemy health, and different bullets)
 =======
   playerSpeed: 0
   isUsingPistol: 0
@@ -652,7 +663,10 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of a7c2e49 (Added player and enemy health, and different bullets)
 =======
 >>>>>>> parent of a7c2e49 (Added player and enemy health, and different bullets)
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -823,10 +837,14 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   m_Offset: {x: 0.009180456, y: -0.11934623}
 
 
+=======
+  m_Offset: {x: 0, y: 0}
+>>>>>>> parent of a7c2e49 (Added player and enemy health, and different bullets)
 =======
   m_Offset: {x: 0, y: 0}
 >>>>>>> parent of a7c2e49 (Added player and enemy health, and different bullets)
@@ -840,6 +858,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< HEAD
 
   m_Size: {x: 0.58687836, y: 0.5776978}
@@ -949,6 +968,10 @@ RectTransform:
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 
+=======
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+>>>>>>> parent of a7c2e49 (Added player and enemy health, and different bullets)
 =======
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
