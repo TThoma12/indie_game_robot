@@ -21,13 +21,13 @@ public class BulletBehavior : MonoBehaviour
     private Vector2 initialPosition;
 
     private GameObject player;
-    private CircleCollider2D bulletCollider;
+    private BoxCollider2D bulletCollider;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player (Placeholder)");
-        bulletCollider = GetComponent<CircleCollider2D>();
+        bulletCollider = GetComponent<BoxCollider2D>();
         bulletCollider.enabled = false;
 
         initialPosition = transform.position;
@@ -43,7 +43,7 @@ public class BulletBehavior : MonoBehaviour
 
         float distanceFromShooter = Vector2.Distance(initialPosition, transform.position);
 
-        if (distanceFromShooter > (player.GetComponent<BoxCollider2D>().size.magnitude) + (bulletCollider.radius / 2))
+        if (distanceFromShooter > (player.GetComponent<BoxCollider2D>().size.magnitude) + (bulletCollider.size.magnitude / 2))
         {
             bulletCollider.enabled = true;
         }
