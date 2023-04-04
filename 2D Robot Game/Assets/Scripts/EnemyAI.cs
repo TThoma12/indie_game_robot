@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pathfinding;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 
@@ -34,7 +33,7 @@ public class EnemyAI : MonoBehaviour
     {
         // Get components
         rb = GetComponent<Rigidbody2D>();
-        player = GameObject.Find("Player (Placeholder)");
+        player = GameObject.Find("Player");
         playerController = player.GetComponent<PlayerController>();
         
     }

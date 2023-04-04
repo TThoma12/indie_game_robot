@@ -39,16 +39,16 @@ public class PlayerController : MonoBehaviour
     private float ammoSize;
     private float magSize;
 
-    private float pistolAmmoSize = 12f;
-    private float pistolMagSize = 100f;
-    private float rifleAmmoSize = 30f;
-    private float rifleMagSize = 90f;
+    public float pistolAmmoSize = 12f;
+    public float pistolMagSize = 100f;
+    public float rifleAmmoSize = 30f;
+    public float rifleMagSize = 90f;
 
-    private float currentPistolAmmo;
-    private float currentRifleAmmo;
+    public float currentPistolAmmo;
+    public float currentRifleAmmo;
 
-    private float currentPistolMag;
-    private float currentRifleMag = 90;
+    public float currentPistolMag;
+    public float currentRifleMag;
 
     private bool canFire = true;
 
