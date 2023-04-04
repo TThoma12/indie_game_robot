@@ -1719,6 +1719,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1338491402}
+    - target: {fileID: 5113580348413484731, guid: c4fca11c4f71eab4497e71b3749d88df, type: 3}
+      propertyPath: pistolBullets
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4fca11c4f71eab4497e71b3749d88df, type: 3}
 --- !u!1001 &8874739860657863674
@@ -1750,15 +1754,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8874739860941870748, guid: d224e184d7826d14683850553aec010e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.27
+      value: -9.270149
       objectReference: {fileID: 0}
     - target: {fileID: 8874739860941870748, guid: d224e184d7826d14683850553aec010e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.37
+      value: 3.3700256
       objectReference: {fileID: 0}
     - target: {fileID: 8874739860941870748, guid: d224e184d7826d14683850553aec010e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.00017875805
       objectReference: {fileID: 0}
     - target: {fileID: 8874739860941870748, guid: d224e184d7826d14683850553aec010e, type: 3}
       propertyPath: m_LocalRotation.w

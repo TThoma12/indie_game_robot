@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class AmmoCrateBehavior : MonoBehaviour
@@ -25,10 +26,62 @@ public class AmmoCrateBehavior : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            player.currentPistolAmmo += pistolBullets;
-            player.currentRifleAmmo += rifleBullets;
+            HandlePistolBullets();
+            HandleRifleBullets();
         }
 
         Destroy(gameObject);
+    }
+
+    private void HandlePistolBullets()
+    {
+        if (player.currentPistolAmmo + pistolBullets + player.currentPistolMag <= player.pistolMagSize + player.pistolAmmoSize)
+        {
+            player.currentPistolAmmo += pistolBullets;
+
+            while (player.currentPistolAmmo > player.pistolAmmoSize)
+            {
+                player.currentPistolAmmo -= player.pistolAmmoSize;
+                if (player.currentPistolMag + player.pistolAmmoSize <= player.pistolMagSize)
+                {
+                    player.currentPistolMag += player.pistolAmmoSize;
+                }
+                else
+                {
+                    player.currentPistolMag = player.pistolMagSize;
+                }
+            }
+        }
+        else
+        {
+            player.currentPistolAmmo = player.pistolAmmoSize;
+            player.currentPistolMag = player.pistolMagSize;
+        }
+    }
+
+    private void HandleRifleBullets()
+    {
+        if (player.currentRifleAmmo + rifleBullets + player.currentRifleMag <= player.rifleMagSize + player.rifleAmmoSize)
+        {
+            player.currentRifleAmmo += rifleBullets;
+
+            while (player.currentRifleAmmo > player.rifleAmmoSize)
+            {
+                player.currentRifleAmmo -= player.rifleAmmoSize;
+                if (player.currentRifleMag + player.rifleAmmoSize <= player.rifleMagSize)
+                {
+                    player.currentRifleMag += player.rifleAmmoSize;
+                }
+                else
+                {
+                    player.currentRifleMag = player.rifleMagSize;
+                }
+            }
+        }
+        else
+        {
+            player.currentRifleAmmo = player.rifleAmmoSize;
+            player.currentRifleMag = player.rifleMagSize;
+        }
     }
 }
