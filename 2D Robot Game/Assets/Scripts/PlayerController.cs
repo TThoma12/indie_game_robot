@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] CameraController cameraFollow;
     [SerializeField] GameObject bulletPrefab;
 
-
     public TextMeshProUGUI gunTypeText;
     
     public float playerSpeed;
@@ -23,12 +22,6 @@ public class PlayerController : MonoBehaviour
     public bool isUsingPistol = true;
 
     public float playerHP = 100;
-
-    
-    public float playerSpeed;
-
-    public bool isUsingPistol;
-
 
     private float normalSpeed = 10.0f;
     private float dashSpeed = 20.0f;
@@ -95,7 +88,6 @@ public class PlayerController : MonoBehaviour
         LookAtMouse();
         HandleInteractions();
 
-
         if(Input.GetMouseButtonDown(0) && canFire)
         {
             if((isUsingPistol && currentPistolAmmo > 0) || (!isUsingPistol && currentRifleAmmo > 0))
@@ -122,13 +114,6 @@ public class PlayerController : MonoBehaviour
         }
 
         SetGunType();
-
-        if(Input.GetMouseButtonDown(0))
-        {
-            SpawnBullet();
-            cameraFollow.TriggerShake();
-        }
-
 
     }
 
@@ -192,7 +177,6 @@ public class PlayerController : MonoBehaviour
     }
 
     private void SpawnBullet()
-
     {
         Instantiate(bulletPrefab, transform.position, transform.rotation);
 
@@ -244,9 +228,5 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(reloadTime);
         Debug.Log("Can Fire");
         canFire = true;
-
-    {
-        Instantiate(bulletPrefab, transform.position, transform.rotation);
-        
     }
 }

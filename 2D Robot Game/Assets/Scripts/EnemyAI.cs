@@ -21,7 +21,6 @@ public class EnemyAI : MonoBehaviour
     //public bool isPatrolling = true;
     public bool canFire = true;
 
-
     public float enemyHP = 100f;
 
     [SerializeField] PlayerController playerController;
@@ -36,10 +35,8 @@ public class EnemyAI : MonoBehaviour
         // Get components
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player (Placeholder)");
-
         playerController = player.GetComponent<PlayerController>();
         
-
     }
 
     // Update is called once per frame
@@ -61,12 +58,10 @@ public class EnemyAI : MonoBehaviour
         //float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         //transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 
-
         if(enemyHP <= 0)
         {
             Destroy(gameObject);
         }
-
 
     }
 
@@ -113,7 +108,6 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(1);
         canFire = true;
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

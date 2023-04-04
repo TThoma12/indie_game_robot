@@ -7,7 +7,6 @@ using UnityEngine.Assertions.Must;
 
 public class BulletBehavior : MonoBehaviour
 {
-
     [SerializeField] private float bulletSpeed = 20f;
     private float xBound = 10.8f;
     private float yBound = 5.2f;
@@ -18,12 +17,6 @@ public class BulletBehavior : MonoBehaviour
 
     private float pistolDamage = 8f;
     private float rifleDamage = 15f;
-
-    [SerializeField] private float bulletSpeed = 0.5f;
-    private float xBound = 10.8f;
-    private float yBound = 5.2f;
-
-    public bool isPlayerBullet;
 
     private Vector2 initialPosition;
 
@@ -39,9 +32,7 @@ public class BulletBehavior : MonoBehaviour
 
         initialPosition = transform.position;
 
-
         bulletDamage = pistolDamage;
-
     }
 
     // Update is called once per frame
@@ -77,10 +68,6 @@ public class BulletBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-
-
-        Destroy(collision.gameObject);
         Destroy(gameObject);
     }
 }
