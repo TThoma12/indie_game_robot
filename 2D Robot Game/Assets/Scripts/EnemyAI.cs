@@ -5,8 +5,7 @@ using Pathfinding;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 
-public class EnemyAI : MonoBehaviour
-{
+public class EnemyAI : MonoBehaviour {
     public GameObject bulletPrefab;
 
     // The targets where we want the enemy to travel
@@ -26,6 +25,10 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] PlayerController playerController;
 
 
+    private Animator anim;
+    private string DYING_ANIMATION = "IsDying";
+
+
     // Rigidbody for enemy
     Rigidbody2D rb;
 
@@ -36,7 +39,7 @@ public class EnemyAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player (Placeholder)");
         playerController = player.GetComponent<PlayerController>();
-        
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -60,7 +63,7 @@ public class EnemyAI : MonoBehaviour
 
         if(enemyHP <= 0)
         {
-            Destroy(gameObject);
+            Died();
         }
 
     }
@@ -119,5 +122,14 @@ public class EnemyAI : MonoBehaviour
         {
             enemyHP -= 15f;
         }
+    }
+
+
+    private void Died() {
+        anim.SetBool(DYING_ANIMATION, true);
+    }
+
+    public void DieAnimationEnded() {
+        Destroy(gameObject);
     }
 }
