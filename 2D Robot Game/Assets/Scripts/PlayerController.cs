@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     
     private float playerSpeed;
 
+    private bool isMoving = false;
+
     public bool isUsingPistol = true;
     public bool isReloading = false;
 
@@ -163,7 +165,7 @@ public class PlayerController : MonoBehaviour
         transform.Translate(input * playerSpeed * Time.deltaTime, Space.World);
 
         // If player presses shift, and both counters are timed out, player can dash. We reset the timer 
-        if((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)))
+        if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
         {
             if (dashCoolCounter <= 0 && dashCounter <= 0)
             {

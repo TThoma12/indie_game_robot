@@ -56,11 +56,8 @@ public class BulletBehavior : MonoBehaviour
 
     private void DestroyOutOfBounds()
     {
-        if (Mathf.Abs(transform.position.x) > xBound)
-        {
-            Destroy(gameObject);
-        }
-        else if (Mathf.Abs(transform.position.y) > yBound)
+        float distanceFromInitialPos = Vector2.Distance(initialPosition, transform.position);
+        if (distanceFromInitialPos > 20f)
         {
             Destroy(gameObject);
         }
