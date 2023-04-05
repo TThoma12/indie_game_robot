@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     public TextMeshProUGUI gunTypeText;
     public TextMeshProUGUI gunAmmoText;
+    public GameObject gameOverText;
 
     private AudioSource playerAudio; 
 
@@ -150,6 +152,16 @@ public class PlayerController : MonoBehaviour
         }
 
         SetGunType();
+
+        if(playerHP <= 0)
+        {
+            gameOverText.SetActive(true);
+
+            if(Input.GetKey(KeyCode.Space))
+            {
+                SceneManager.LoadScene("Game Scene");
+            }
+        }
 
     }
 
