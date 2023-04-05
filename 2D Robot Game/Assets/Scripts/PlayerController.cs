@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip pistolReloadSound;
     public AudioClip footstep1;
     public AudioClip footstep2;
+    public AudioClip dashSound;
     
     private float playerSpeed;
 
@@ -161,12 +162,6 @@ public class PlayerController : MonoBehaviour
         // Moves player based on input
         transform.Translate(input * playerSpeed * Time.deltaTime, Space.World);
 
-        if(horizontalInput > 0 || verticalInput > 0)
-        {
-            playerAudio.PlayOneShot(footstep1, 1f);
-            playerAudio.PlayOneShot(footstep2, 1f);
-        }
-
         // If player presses shift, and both counters are timed out, player can dash. We reset the timer 
         if((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)))
         {
@@ -175,6 +170,7 @@ public class PlayerController : MonoBehaviour
                 playerSpeed = dashSpeed;
                 dashCounter = dashLength;
                 trailRenderer.emitting = true;
+                playerAudio.PlayOneShot(dashSound, 1f);
             }
         }
 
