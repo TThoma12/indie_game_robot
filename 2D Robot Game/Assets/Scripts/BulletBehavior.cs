@@ -32,7 +32,6 @@ public class BulletBehavior : MonoBehaviour
 
         initialPosition = transform.position;
 
-        bulletDamage = pistolDamage;
     }
 
     // Update is called once per frame
