@@ -53,8 +53,10 @@ public class PlayerController : MonoBehaviour
 
     public float pistolAmmoSize = 12f;
     public float pistolMagSize = 100f;
+    private float pistolDamage = 8f;
     public float rifleAmmoSize = 30f;
     public float rifleMagSize = 90f;
+    private float rifleDamage = 15f;
 
     public float currentPistolAmmo;
     public float currentRifleAmmo;
@@ -151,6 +153,10 @@ public class PlayerController : MonoBehaviour
 
         SetGunType();
 
+        if (playerHP < 0) {
+            Died();
+        }
+
     }
 
     private void MovePlayer()
@@ -215,17 +221,20 @@ public class PlayerController : MonoBehaviour
 
     private void SpawnBullet()
     {
-        Instantiate(bulletPrefab, transform.position, transform.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+        BulletBehavior bulletBehavior = bullet.GetComponent<BulletBehavior>();
 
         if(isUsingPistol)
         {
             playerAudio.PlayOneShot(pistolFireSound, 1f);
             currentPistolAmmo--;
+            bulletBehavior.bulletDamage = pistolDamage;
         }
         else
         {
             playerAudio.PlayOneShot(rifleFireSound, 1f);
             currentRifleAmmo--;
+            bulletBehavior.bulletDamage = rifleDamage;
         }
 
         canFire = false;
@@ -276,5 +285,14 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(reloadTime);
         isReloading = false;
         canFire = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        BulletBehavior bulletBehavior = collision.GetComponent<BulletBehavior>();
+
+        playerHP -= bulletBehavior.bulletDamage;
+    }
+
+    private void Died() {
     }
 }

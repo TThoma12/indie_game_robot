@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
+using UnityEditor.XR;
+using UnityEditor.UI;
 
-public class EnemyAI : MonoBehaviour
-{
+public class EnemyAI : MonoBehaviour {
     public GameObject bulletPrefab;
 
     // The targets where we want the enemy to travel
@@ -20,13 +21,18 @@ public class EnemyAI : MonoBehaviour
     //public bool isPatrolling = true;
     public bool canFire = true;
 
-    public float enemyHP = 100f;
+    [SerializeField] private float enemyHP = 100f;
+    [SerializeField] private float damage = 5f;
 
     [SerializeField] PlayerController playerController;
 
+    private Animator anim;
+    private string DYING_ANIMATION = "IsDying";
 
     // Rigidbody for enemy
     Rigidbody2D rb;
+
+    private bool PlayerOnRange = false;
 
     //// Start is called before the first frame update
     void Start()
@@ -35,33 +41,45 @@ public class EnemyAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
         playerController = player.GetComponent<PlayerController>();
-        
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        WalkPatrolPath();
-
-        float angle = 10;
-        if (Vector3.Angle(player.transform.forward, transform.position - player.transform.position) < angle)
-        {
-            if (canFire)
-            {
-                FireBullet();
-            }
+        
+        if (!PlayerOnRange) {
+            WalkPatrolPath();
+            IsEnemyOnRange();
+        } else {
+            HoldAngle();
+            IsEnemyOutOfRange();
         }
-
-        // Holding-angle enemy code? To face player
-        //Vector3 dir = player.transform.position - transform.position;
-        //float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        //transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 
         if(enemyHP <= 0)
         {
-            Destroy(gameObject);
+            Died();
         }
 
+    }
+
+    private void IsEnemyOnRange() {
+        PlayerOnRange = Vector2.Distance(transform.position, player.transform.position) < 5f;
+        transform.up = player.transform.position - transform.position;
+        // transform.up = .normalized;
+    }
+
+    private void IsEnemyOutOfRange() {
+        PlayerOnRange = Vector2.Distance(transform.position, player.transform.position) < 5f;
+    }
+
+    private void HoldAngle() {
+        float angle = Vector2.Angle(player.transform.position - transform.position, transform.up);
+        if (angle < 10f) {
+            if (canFire) {
+                FireBullet();
+            }
+        }
     }
 
     private void WalkPatrolPath()
@@ -84,13 +102,12 @@ public class EnemyAI : MonoBehaviour
         }
 
         LookAt2D(targets[targetIndex].position);
-
-        
     }
 
     public void FireBullet()
     {
-        Instantiate(bulletPrefab, transform.position, transform.rotation);
+        BulletBehavior bulletBehavior = Instantiate(bulletPrefab, transform.position, transform.rotation).GetComponent<BulletBehavior>();
+        bulletBehavior.bulletDamage = damage;
         canFire = false;
         StartCoroutine(BulletCooldown());
     }
@@ -110,13 +127,12 @@ public class EnemyAI : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(playerController.isUsingPistol)
-        {
-            enemyHP -= 8f;
-        }
-        else
-        {
-            enemyHP -= 15f;
-        }
+        BulletBehavior bulletBehavior = collision.GetComponent<BulletBehavior>();
+       
+        enemyHP -= bulletBehavior.bulletDamage;
+    }
+
+    private void Died() {
+        anim.SetBool(DYING_ANIMATION, true);
     }
 }
