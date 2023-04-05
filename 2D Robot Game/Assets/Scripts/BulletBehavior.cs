@@ -56,7 +56,7 @@ public class BulletBehavior : MonoBehaviour
     private void DestroyOutOfBounds()
     {
         float distanceFromInitialPos = Vector2.Distance(initialPosition, transform.position);
-        if (distanceFromInitialPos > 20f)
+        if (distanceFromInitialPos > 200)
         {
             Destroy(gameObject);
         }

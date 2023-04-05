@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class PlayerController : MonoBehaviour
 
     public TextMeshProUGUI gunTypeText;
     public TextMeshProUGUI gunAmmoText;
+
+    public GameObject escapeTrigger;
 
     private AudioSource playerAudio; 
 
@@ -153,7 +156,7 @@ public class PlayerController : MonoBehaviour
 
         SetGunType();
 
-        if (playerHP < 0) {
+        if (playerHP <= 0) {
             Died();
         }
 
@@ -288,11 +291,20 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        BulletBehavior bulletBehavior = collision.GetComponent<BulletBehavior>();
 
-        playerHP -= bulletBehavior.bulletDamage;
+        if(collision.gameObject == escapeTrigger)
+        {
+            SceneManager.LoadScene("Escaped Scene");
+        }
+        else
+        {
+            BulletBehavior bulletBehavior = collision.GetComponent<BulletBehavior>();
+
+            playerHP -= bulletBehavior.bulletDamage;
+        }
     }
 
     private void Died() {
+        SceneManager.LoadScene("Game Over Scene");
     }
 }

@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Settings Scene.unity
     guid: 93ad953993cba4847b6094e3575fb72a
+  - enabled: 1
+    path: Assets/Scenes/Game Over Scene.unity
+    guid: d6f873f930431034e9c69e5dce5b8733
+  - enabled: 1
+    path: Assets/Scenes/Escaped Scene.unity
+    guid: e2c4799cca4c17a4684860ccb6bc8806
   m_configObjects: {}
