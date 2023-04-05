@@ -14,6 +14,10 @@ public class EnemyAI : MonoBehaviour {
 
     private GameObject player;
 
+    public AudioClip hitSound;
+    public AudioSource enemyAudio;
+    public AudioClip enemyShotSound;
+
     public int targetIndex = 0;
     
     public float speed = 5f;
@@ -50,10 +54,10 @@ public class EnemyAI : MonoBehaviour {
         
         if (!PlayerOnRange) {
             WalkPatrolPath();
-            IsEnemyOnRange();
+            IsEnemyOutOfRange();
         } else {
             HoldAngle();
-            IsEnemyOutOfRange();
+            IsEnemyOnRange();
         }
 
         if(enemyHP <= 0)
@@ -108,6 +112,7 @@ public class EnemyAI : MonoBehaviour {
     {
         BulletBehavior bulletBehavior = Instantiate(bulletPrefab, transform.position, transform.rotation).GetComponent<BulletBehavior>();
         bulletBehavior.bulletDamage = damage;
+        enemyAudio.PlayOneShot(enemyShotSound, 1f);
         canFire = false;
         StartCoroutine(BulletCooldown());
     }
@@ -130,6 +135,8 @@ public class EnemyAI : MonoBehaviour {
         BulletBehavior bulletBehavior = collision.GetComponent<BulletBehavior>();
        
         enemyHP -= bulletBehavior.bulletDamage;
+        enemyAudio.PlayOneShot(hitSound, 1f);
+        
     }
 
     private void Died() {

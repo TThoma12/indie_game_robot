@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip footstep1;
     public AudioClip footstep2;
     public AudioClip dashSound;
-    
+    public AudioClip playerHitSound;
+
     private float playerSpeed;
 
     private bool isMoving = false;
@@ -301,6 +302,8 @@ public class PlayerController : MonoBehaviour
             BulletBehavior bulletBehavior = collision.GetComponent<BulletBehavior>();
 
             playerHP -= bulletBehavior.bulletDamage;
+
+            playerAudio.PlayOneShot(playerHitSound, 1f);
         }
     }
 

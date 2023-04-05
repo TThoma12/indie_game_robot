@@ -7,7 +7,7 @@ using UnityEngine.Assertions.Must;
 
 public class BulletBehavior : MonoBehaviour
 {
-    [SerializeField] private float bulletSpeed = 20f;
+    [SerializeField] private float bulletSpeed = 30f;
     private float xBound = 10.8f;
     private float yBound = 5.2f;
 
