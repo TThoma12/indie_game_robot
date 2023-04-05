@@ -933,6 +933,7 @@ GameObject:
   - component: {fileID: 1338491405}
   - component: {fileID: 1338491406}
   - component: {fileID: 1338491407}
+  - component: {fileID: 1338491408}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -959,6 +960,12 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1861128699853914685, guid: 3c8e282c71588ef4c8431e5965c96674, type: 3}
   gunTypeText: {fileID: 1315345700}
   gunAmmoText: {fileID: 654368976}
+  rifleFireSound: {fileID: 8300000, guid: 95441bd589183174a8eb038a1f90dfc0, type: 3}
+  pistolFireSound: {fileID: 8300000, guid: cb8f412ed8da65c46b7693b4075bb1ee, type: 3}
+  rifleReloadSound: {fileID: 8300000, guid: 9b60d1373be03c649b33bbca8df87877, type: 3}
+  pistolReloadSound: {fileID: 8300000, guid: 5d8a73abfc0bbf3469e4e382bbcca4c4, type: 3}
+  footstep1: {fileID: 8300000, guid: 9fcfc99f2e7a5e045ad38af814e1099d, type: 3}
+  footstep2: {fileID: 8300000, guid: 892503ab07d6aeb4d9079d9a2fe293f4, type: 3}
   isUsingPistol: 1
   isReloading: 0
   playerHP: 100
@@ -1194,6 +1201,102 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5861472, y: 0.57235205}
   m_EdgeRadius: 0
+--- !u!82 &1338491408
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338491401}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1430142045
 GameObject:
   m_ObjectHideFlags: 0
@@ -1719,6 +1822,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1338491402}
+    - target: {fileID: 5113580348413484731, guid: c4fca11c4f71eab4497e71b3749d88df, type: 3}
+      propertyPath: rifleBullets
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5113580348413484731, guid: c4fca11c4f71eab4497e71b3749d88df, type: 3}
       propertyPath: pistolBullets
       value: 10

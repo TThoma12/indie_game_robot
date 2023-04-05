@@ -17,6 +17,15 @@ public class PlayerController : MonoBehaviour
 
     public TextMeshProUGUI gunTypeText;
     public TextMeshProUGUI gunAmmoText;
+
+    private AudioSource playerAudio; 
+
+    public AudioClip rifleFireSound;
+    public AudioClip pistolFireSound;
+    public AudioClip rifleReloadSound;
+    public AudioClip pistolReloadSound;
+    public AudioClip footstep1;
+    public AudioClip footstep2;
     
     private float playerSpeed;
 
@@ -80,6 +89,8 @@ public class PlayerController : MonoBehaviour
 
         currentPistolMag = pistolMagSize;
         currentRifleMag = rifleMagSize;
+
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -119,18 +130,20 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.R))
         {
-            if(isUsingPistol && currentPistolMag > 0)
+            if(isUsingPistol && currentPistolMag > 0 && currentPistolAmmo == 0)
             {
                 currentPistolAmmo = pistolAmmoSize;
                 currentPistolMag -= pistolAmmoSize;
+                canFire = false;
+                StartCoroutine(ReloadTime());
             }
-            else if(!isUsingPistol && currentRifleMag > 0)
+            else if(!isUsingPistol && currentRifleMag > 0 && currentRifleAmmo == 0)
             {
                 currentRifleAmmo = rifleAmmoSize;
                 currentRifleMag -= rifleAmmoSize;
+                canFire = false;
+                StartCoroutine(ReloadTime());
             }
-            canFire = false;
-            StartCoroutine(ReloadTime());
         }
 
         SetGunType();
@@ -147,6 +160,12 @@ public class PlayerController : MonoBehaviour
 
         // Moves player based on input
         transform.Translate(input * playerSpeed * Time.deltaTime, Space.World);
+
+        if(horizontalInput > 0 || verticalInput > 0)
+        {
+            playerAudio.PlayOneShot(footstep1, 1f);
+            playerAudio.PlayOneShot(footstep2, 1f);
+        }
 
         // If player presses shift, and both counters are timed out, player can dash. We reset the timer 
         if((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)))
@@ -202,10 +221,12 @@ public class PlayerController : MonoBehaviour
 
         if(isUsingPistol)
         {
+            playerAudio.PlayOneShot(pistolFireSound, 1f);
             currentPistolAmmo--;
         }
         else
         {
+            playerAudio.PlayOneShot(rifleFireSound, 1f);
             currentRifleAmmo--;
         }
 
@@ -244,6 +265,16 @@ public class PlayerController : MonoBehaviour
     {
         gunAmmoText.text = "Reloading";
         isReloading = true;
+
+        if(isUsingPistol)
+        {
+            playerAudio.PlayOneShot(pistolReloadSound, 1f);
+        }
+        else
+        {
+            playerAudio.PlayOneShot(rifleReloadSound, 1f);
+        }
+
         yield return new WaitForSeconds(reloadTime);
         isReloading = false;
         canFire = true;
