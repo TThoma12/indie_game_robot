@@ -10,10 +10,14 @@ public class AmmoCrateBehavior : MonoBehaviour
 
     public PlayerController player;
 
+    public AudioClip rifleRefillSound;
+    public AudioClip pistolRefillSound;
+    public AudioSource crateAudio;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -28,6 +32,15 @@ public class AmmoCrateBehavior : MonoBehaviour
         {
             HandlePistolBullets();
             HandleRifleBullets();
+
+            if(pistolBullets > 0)
+            {
+                crateAudio.PlayOneShot(pistolRefillSound, 1f);
+            }
+            if(rifleBullets > 0)
+            {
+                crateAudio.PlayOneShot(rifleRefillSound, 1f);
+            }
         }
 
         Destroy(gameObject);

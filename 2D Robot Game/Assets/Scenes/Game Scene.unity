@@ -33505,7 +33505,7 @@ PrefabInstance:
     - target: {fileID: 5113580348413484731, guid: c4fca11c4f71eab4497e71b3749d88df, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1338491402}
+      objectReference: {fileID: 0}
     - target: {fileID: 5113580348413484731, guid: c4fca11c4f71eab4497e71b3749d88df, type: 3}
       propertyPath: rifleBullets
       value: 80
@@ -33769,7 +33769,7 @@ PrefabInstance:
     - target: {fileID: 5113580348413484731, guid: c4fca11c4f71eab4497e71b3749d88df, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1338491402}
+      objectReference: {fileID: 0}
     - target: {fileID: 5113580348413484731, guid: c4fca11c4f71eab4497e71b3749d88df, type: 3}
       propertyPath: rifleBullets
       value: 100
@@ -34354,7 +34354,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1673848590564584a9d3c971fe65a026, type: 3}
   - {fileID: 21300000, guid: 6b15f1ac670dc8443bf533464b3defb6, type: 3}
   - {fileID: 21300000, guid: a522abc49d4c25d488476416a7313291, type: 3}
-  playerController: {fileID: 1338491402}
+  playerController: {fileID: 1338491409}
   image: {fileID: 762244279}
 --- !u!1 &763568202
 GameObject:
@@ -35385,10 +35385,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1338491404}
   - component: {fileID: 1338491403}
-  - component: {fileID: 1338491402}
   - component: {fileID: 1338491405}
   - component: {fileID: 1338491406}
   - component: {fileID: 1338491407}
+  - component: {fileID: 1338491409}
   - component: {fileID: 1338491408}
   m_Layer: 0
   m_Name: Player
@@ -35397,47 +35397,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1338491402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1338491401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6947818a0756af46bd242a5410b05ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalInput: 0
-  verticalInput: 0
-  trailRenderer: {fileID: 1338491406}
-  cameraFollow: {fileID: 519420034}
-  bulletPrefab: {fileID: 1861128699853914685, guid: 3c8e282c71588ef4c8431e5965c96674, type: 3}
-  gunTypeText: {fileID: 1315345700}
-  gunAmmoText: {fileID: 654368976}
-  escapeTrigger: {fileID: 2011102418}
-  rifleFireSound: {fileID: 8300000, guid: 95441bd589183174a8eb038a1f90dfc0, type: 3}
-  pistolFireSound: {fileID: 8300000, guid: cb8f412ed8da65c46b7693b4075bb1ee, type: 3}
-  rifleReloadSound: {fileID: 8300000, guid: 9b60d1373be03c649b33bbca8df87877, type: 3}
-  pistolReloadSound: {fileID: 8300000, guid: 5d8a73abfc0bbf3469e4e382bbcca4c4, type: 3}
-  footstep1: {fileID: 8300000, guid: 9fcfc99f2e7a5e045ad38af814e1099d, type: 3}
-  footstep2: {fileID: 8300000, guid: 892503ab07d6aeb4d9079d9a2fe293f4, type: 3}
-  dashSound: {fileID: 8300000, guid: 5d378a57d25f34c46bb886450abc7b6c, type: 3}
-  playerHitSound: {fileID: 8300000, guid: 5140a35b82ed3bd47ae286ddeef47c40, type: 3}
-  isUsingPistol: 1
-  isReloading: 0
-  playerHP: 100
-  pistolAmmoSize: 12
-  pistolMagSize: 100
-  rifleAmmoSize: 30
-  rifleMagSize: 90
-  currentPistolAmmo: 0
-  currentRifleAmmo: 0
-  currentPistolMag: 0
-  currentRifleMag: 90
-  fireCooldown: 0
-  reloadTime: 0
 --- !u!212 &1338491403
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35756,6 +35715,47 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1338491409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338491401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6947818a0756af46bd242a5410b05ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalInput: 0
+  verticalInput: 0
+  trailRenderer: {fileID: 1338491406}
+  cameraFollow: {fileID: 519420034}
+  bulletPrefab: {fileID: 1861128699853914685, guid: 3c8e282c71588ef4c8431e5965c96674, type: 3}
+  gunTypeText: {fileID: 1315345700}
+  gunAmmoText: {fileID: 654368976}
+  escapeTrigger: {fileID: 2011102418}
+  rifleFireSound: {fileID: 8300000, guid: 95441bd589183174a8eb038a1f90dfc0, type: 3}
+  pistolFireSound: {fileID: 8300000, guid: cb8f412ed8da65c46b7693b4075bb1ee, type: 3}
+  rifleReloadSound: {fileID: 8300000, guid: 9b60d1373be03c649b33bbca8df87877, type: 3}
+  pistolReloadSound: {fileID: 8300000, guid: 5d8a73abfc0bbf3469e4e382bbcca4c4, type: 3}
+  footstep1: {fileID: 0}
+  footstep2: {fileID: 0}
+  dashSound: {fileID: 8300000, guid: 5d378a57d25f34c46bb886450abc7b6c, type: 3}
+  playerHitSound: {fileID: 8300000, guid: 5140a35b82ed3bd47ae286ddeef47c40, type: 3}
+  isUsingPistol: 1
+  isReloading: 0
+  playerHP: 100
+  pistolAmmoSize: 12
+  pistolMagSize: 100
+  rifleAmmoSize: 30
+  rifleMagSize: 90
+  currentPistolAmmo: 0
+  currentRifleAmmo: 0
+  currentPistolMag: 0
+  currentRifleMag: 0
+  fireCooldown: 0
+  reloadTime: 0
 --- !u!1001 &1363696672
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -116145,7 +116145,7 @@ PrefabInstance:
     - target: {fileID: 5113580348413484731, guid: c4fca11c4f71eab4497e71b3749d88df, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1338491402}
+      objectReference: {fileID: 0}
     - target: {fileID: 5113580348413484731, guid: c4fca11c4f71eab4497e71b3749d88df, type: 3}
       propertyPath: pistolBullets
       value: 100
@@ -116207,9 +116207,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoCrate
       objectReference: {fileID: 0}
-    - target: {fileID: 5113580348413484731, guid: c4fca11c4f71eab4497e71b3749d88df, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1338491402}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4fca11c4f71eab4497e71b3749d88df, type: 3}
