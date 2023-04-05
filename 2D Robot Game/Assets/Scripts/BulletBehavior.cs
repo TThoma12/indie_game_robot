@@ -42,7 +42,7 @@ public class BulletBehavior : MonoBehaviour
 
         float distanceFromShooter = Vector2.Distance(initialPosition, transform.position);
 
-        if (distanceFromShooter > (player.GetComponent<BoxCollider2D>().size.magnitude) + (bulletCollider.size.magnitude / 2))
+        if (distanceFromShooter > 1)
         {
             bulletCollider.enabled = true;
         }
@@ -55,11 +55,8 @@ public class BulletBehavior : MonoBehaviour
 
     private void DestroyOutOfBounds()
     {
-        if (Mathf.Abs(transform.position.x) > xBound)
-        {
-            Destroy(gameObject);
-        }
-        else if (Mathf.Abs(transform.position.y) > yBound)
+        float distanceFromInitialPos = Vector2.Distance(initialPosition, transform.position);
+        if (distanceFromInitialPos > 20f)
         {
             Destroy(gameObject);
         }
