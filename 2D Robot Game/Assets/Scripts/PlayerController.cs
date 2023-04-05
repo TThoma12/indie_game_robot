@@ -100,6 +100,15 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if(isUsingPistol)
+        {
+            gunTypeText.text = "Gun: Pistol";
+        }
+        else
+        {
+            gunTypeText.text = "Gun: Rifle";
+        }
+
         if(Input.GetKeyDown(KeyCode.R))
         {
             if(isUsingPistol && currentPistolMag > 0)
@@ -209,7 +218,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.Alpha1))
         {
             isUsingPistol = true;
-            gunTypeText.text = "Gun: Pistol";
             Debug.Log("Gun: Pistol, Fire Rate: " + pistolFR + " bullets/sec, Reload Speed: " + pistolReloadTime + ", ammo/mag: " + currentPistolAmmo + "/" + currentPistolMag);
 
             reloadTime = pistolReloadTime;
@@ -219,7 +227,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.Alpha2))
         {
             isUsingPistol = false;
-            gunTypeText.text = "Gun: Rifle";
             Debug.Log("Gun: Rifle, Fire Rate: " + rifleFR + " bullets/sec, Reload Speed: " + rifleReloadTime + ", ammo/mag: " + currentRifleAmmo + "/" + currentRifleMag);
             reloadTime = rifleReloadTime;
             fireCooldown = 1/rifleFR;
