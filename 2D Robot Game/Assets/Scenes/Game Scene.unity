@@ -7199,13 +7199,14 @@ GameObject:
   - component: {fileID: 301100395}
   - component: {fileID: 301100394}
   - component: {fileID: 301100396}
+  - component: {fileID: 301100397}
   m_Layer: 0
   m_Name: Patrolling Enemy (Placeholder)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &301100389
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7315,7 +7316,8 @@ MonoBehaviour:
   targetIndex: 0
   speed: 5
   canFire: 1
-  enemyHP: 100
+  enemyHP: 5
+  damage: 100
   playerController: {fileID: 0}
 --- !u!61 &301100396
 BoxCollider2D:
@@ -7343,6 +7345,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0611, y: 1.0000002}
   m_EdgeRadius: 0
+--- !u!95 &301100397
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301100388}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd7111d7e179fc44a8da9222ef5c68d4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
