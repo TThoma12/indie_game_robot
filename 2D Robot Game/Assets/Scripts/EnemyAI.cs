@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
-using UnityEditor.XR;
-using UnityEditor.UI;
 
 public class EnemyAI : MonoBehaviour {
     public GameObject bulletPrefab;

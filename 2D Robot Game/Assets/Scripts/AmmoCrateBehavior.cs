@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class AmmoCrateBehavior : MonoBehaviour
@@ -33,17 +32,17 @@ public class AmmoCrateBehavior : MonoBehaviour
             HandlePistolBullets();
             HandleRifleBullets();
 
-            if(pistolBullets > 0)
+            if (pistolBullets > 0)
             {
-                crateAudio.PlayOneShot(pistolRefillSound, 1f);
+                AudioSource.PlayClipAtPoint(pistolRefillSound, transform.position, 100f);
             }
-            if(rifleBullets > 0)
+            if (rifleBullets > 0)
             {
-                crateAudio.PlayOneShot(rifleRefillSound, 1f);
+                AudioSource.PlayClipAtPoint(rifleRefillSound, transform.position, 100f);
             }
         }
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     private void HandlePistolBullets()

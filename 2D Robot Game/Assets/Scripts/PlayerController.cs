@@ -279,11 +279,11 @@ public class PlayerController : MonoBehaviour
 
         if(isUsingPistol)
         {
-            playerAudio.PlayOneShot(pistolReloadSound, 1f);
+            playerAudio.PlayOneShot(pistolReloadSound, 0.7f);
         }
         else
         {
-            playerAudio.PlayOneShot(rifleReloadSound, 1f);
+            playerAudio.PlayOneShot(rifleReloadSound, 0.7f);
         }
 
         yield return new WaitForSeconds(reloadTime);
