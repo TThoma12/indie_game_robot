@@ -57,10 +57,10 @@ public class PlayerController : MonoBehaviour
 
     public float pistolAmmoSize = 12f;
     public float pistolMagSize = 100f;
-    private float pistolDamage = 8f;
+    private float pistolDamage = 25f;
     public float rifleAmmoSize = 30f;
     public float rifleMagSize = 90f;
-    private float rifleDamage = 15f;
+    private float rifleDamage = 35f;
 
     public float currentPistolAmmo;
     public float currentRifleAmmo;
@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
         LookAtMouse();
         HandleInteractions();
 
-        if(Input.GetMouseButtonDown(0) && canFire)
+        if((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && canFire)
         {
             if((isUsingPistol && currentPistolAmmo > 0) || (!isUsingPistol && currentRifleAmmo > 0))
             {
@@ -304,10 +304,20 @@ public class PlayerController : MonoBehaviour
             playerHP -= bulletBehavior.bulletDamage;
 
             playerAudio.PlayOneShot(playerHitSound, 1f);
+
+            StartCoroutine(PlayerHitVisual());
         }
     }
 
     private void Died() {
         SceneManager.LoadScene("Game Over Scene");
+    }
+
+    IEnumerator PlayerHitVisual()
+    {
+        SpriteRenderer enemySprite = this.gameObject.GetComponent<SpriteRenderer>();
+        enemySprite.color = new Color(255, 0, 0);
+        yield return new WaitForSeconds(0.2f);
+        enemySprite.color = new Color(255, 255, 255);
     }
 }

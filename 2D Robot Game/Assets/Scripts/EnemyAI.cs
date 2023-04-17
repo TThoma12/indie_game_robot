@@ -49,16 +49,20 @@ public class EnemyAI : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        
-        if (!PlayerOnRange) {
-            WalkPatrolPath();
-            IsEnemyOutOfRange();
-        } else {
-            HoldAngle();
-            IsEnemyOnRange();
+        if(enemyHP > 0)
+        {
+            if (!PlayerOnRange)
+            {
+                WalkPatrolPath();
+                IsEnemyOutOfRange();
+            }
+            else
+            {
+                HoldAngle();
+                IsEnemyOnRange();
+            }
         }
-
-        if(enemyHP <= 0)
+        else
         {
             Died();
         }
@@ -134,10 +138,21 @@ public class EnemyAI : MonoBehaviour {
        
         enemyHP -= bulletBehavior.bulletDamage;
         enemyAudio.PlayOneShot(hitSound, 1f);
+
+        StartCoroutine(EnemyHitVisual());
         
     }
 
     private void Died() {
         anim.SetBool(DYING_ANIMATION, true);
+        canFire = false;
+    }
+
+    IEnumerator EnemyHitVisual()
+    {
+        SpriteRenderer enemySprite = this.gameObject.GetComponent<SpriteRenderer>();
+        enemySprite.color = new Color(255, 0, 0);
+        yield return new WaitForSeconds(0.2f);
+        enemySprite.color = new Color(255, 255, 255);
     }
 }

@@ -33630,7 +33630,7 @@ AudioSource:
   m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -35941,7 +35941,7 @@ TilemapRenderer:
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
-  m_Mode: 0
+  m_Mode: 1
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
 --- !u!1839735485 &1430142048
@@ -116000,6 +116000,18 @@ PrefabInstance:
     - target: {fileID: 1509325039784386705, guid: 4424b1e3d0451bc43bf43216e937e2e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509325039784386706, guid: 4424b1e3d0451bc43bf43216e937e2e5, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509325039784386706, guid: 4424b1e3d0451bc43bf43216e937e2e5, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509325039784386706, guid: 4424b1e3d0451bc43bf43216e937e2e5, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1509325039784386707, guid: 4424b1e3d0451bc43bf43216e937e2e5, type: 3}
       propertyPath: m_Name
