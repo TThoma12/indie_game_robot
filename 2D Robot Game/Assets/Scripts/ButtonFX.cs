@@ -10,12 +10,19 @@ public class ButtonFX : MonoBehaviour
 
     public void HoverSound()
     {
-        myFX.PlayOneShot(hover, 1f);
+        AudioManager.Instance.PlaySFX("UINavigation");
     }
 
 
     public void PressedSound()
     {
-        myFX.PlayOneShot(pressed, 1f);
+        if (this.gameObject.name.Equals("Start Button"))
+        {
+            AudioManager.Instance.PlaySFX("UIStart");
+        }
+        else
+        {
+            AudioManager.Instance.PlaySFX("UISelect");
+        }
     }
 }

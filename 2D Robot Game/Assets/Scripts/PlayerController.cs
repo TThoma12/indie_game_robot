@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
                 playerSpeed = dashSpeed;
                 dashCounter = dashLength;
                 trailRenderer.emitting = true;
-                playerAudio.PlayOneShot(dashSound, 1f);
+                AudioManager.Instance.PlaySFX("Dash");
             }
         }
 
@@ -230,13 +230,13 @@ public class PlayerController : MonoBehaviour
 
         if(isUsingPistol)
         {
-            playerAudio.PlayOneShot(pistolFireSound, 1f);
+            AudioManager.Instance.PlaySFX("PistolGunshot");
             currentPistolAmmo--;
             bulletBehavior.bulletDamage = pistolDamage;
         }
         else
         {
-            playerAudio.PlayOneShot(rifleFireSound, 1f);
+            AudioManager.Instance.PlaySFX("ARGunshot");
             currentRifleAmmo--;
             bulletBehavior.bulletDamage = rifleDamage;
         }
@@ -279,11 +279,11 @@ public class PlayerController : MonoBehaviour
 
         if(isUsingPistol)
         {
-            playerAudio.PlayOneShot(pistolReloadSound, 0.7f);
+            AudioManager.Instance.PlaySFX("PistolReload");
         }
         else
         {
-            playerAudio.PlayOneShot(rifleReloadSound, 0.7f);
+            AudioManager.Instance.PlaySFX("ARReload");
         }
 
         yield return new WaitForSeconds(reloadTime);
@@ -303,7 +303,7 @@ public class PlayerController : MonoBehaviour
 
             playerHP -= bulletBehavior.bulletDamage;
 
-            playerAudio.PlayOneShot(playerHitSound, 1f);
+            AudioManager.Instance.PlaySFX("PlayerImpact");
 
             StartCoroutine(PlayerHitVisual());
         }
@@ -315,9 +315,9 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator PlayerHitVisual()
     {
-        SpriteRenderer enemySprite = this.gameObject.GetComponent<SpriteRenderer>();
-        enemySprite.color = new Color(255, 0, 0);
+        SpriteRenderer playerSprite = this.gameObject.GetComponent<SpriteRenderer>();
+        playerSprite.color = new Color(255, 0, 0);
         yield return new WaitForSeconds(0.2f);
-        enemySprite.color = new Color(255, 255, 255);
+        playerSprite.color = new Color(255, 255, 255);
     }
 }

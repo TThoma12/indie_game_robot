@@ -114,7 +114,7 @@ public class EnemyAI : MonoBehaviour {
     {
         BulletBehavior bulletBehavior = Instantiate(bulletPrefab, transform.position, transform.rotation).GetComponent<BulletBehavior>();
         bulletBehavior.bulletDamage = damage;
-        enemyAudio.PlayOneShot(enemyShotSound, 1f);
+        AudioManager.Instance.PlaySFX("PistolGunshot");
         canFire = false;
         StartCoroutine(BulletCooldown());
     }
@@ -137,7 +137,7 @@ public class EnemyAI : MonoBehaviour {
         BulletBehavior bulletBehavior = collision.GetComponent<BulletBehavior>();
        
         enemyHP -= bulletBehavior.bulletDamage;
-        enemyAudio.PlayOneShot(hitSound, 1f);
+        //AudioManager.Instance.PlaySFX("");
 
         StartCoroutine(EnemyHitVisual());
         

@@ -34,11 +34,11 @@ public class AmmoCrateBehavior : MonoBehaviour
 
             if (pistolBullets > 0)
             {
-                AudioSource.PlayClipAtPoint(pistolRefillSound, transform.position, 100f);
+                AudioManager.Instance.PlaySFX("AmmoCratePistol");
             }
             if (rifleBullets > 0)
             {
-                AudioSource.PlayClipAtPoint(rifleRefillSound, transform.position, 100f);
+                AudioManager.Instance.PlaySFX("AmmoCrateAR");
             }
         }
 
