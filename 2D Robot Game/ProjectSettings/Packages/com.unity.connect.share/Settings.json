@@ -6,7 +6,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"C:/Users/John/Unity Projects/Game Jams/indie_game_robot/2D Robot Game/Builds/Build WebGL 2;C:/Users/John/Unity Projects/Game Jams/indie_game_robot/2D Robot Game/Builds/Build WebGL;;;;;;;;\"}"
+                "value": "{\"m_Value\":\"C:/Users/John/Unity Projects/Game Jams/indie_game_robot/2D Robot Game/Builds/WebGL Build;C:/Users/John/Unity Projects/Game Jams/indie_game_robot/2D Robot Game/Builds/WebGL Build 4;C:/Users/John/Unity Projects/Game Jams/indie_game_robot/2D Robot Game/Builds/WebGL Build 3;C:/Users/John/Unity Projects/Game Jams/indie_game_robot/2D Robot Game/Builds/Build WebGL 2;C:/Users/John/Unity Projects/Game Jams/indie_game_robot/2D Robot Game/Builds/Build WebGL;;;;;\"}"
             }
         ]
     }
